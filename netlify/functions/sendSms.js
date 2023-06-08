@@ -7,19 +7,40 @@ const client = new twilio(
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+    return {
+      statusCode: 405,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+      body: "Method Not Allowed",
+    };
   }
 
   const { phoneNumbers, message, token } = JSON.parse(event.body);
 
   // Check if the token is valid
   if (token !== process.env.API_TOKEN) {
-    return { statusCode: 403, body: "Invalid token" };
+    return {
+      statusCode: 403,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+      body: "Invalid token",
+    };
   }
 
   // Check if message is empty
   if (!message || message.trim() === "") {
-    return { statusCode: 400, body: "Empty message" };
+    return {
+      statusCode: 400,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+      body: "Empty message",
+    };
   }
 
   // Loop through phoneNumbers and send SMS
@@ -36,10 +57,21 @@ exports.handler = async (event, context) => {
     messages.forEach((message) => console.log(message.sid));
     return {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
       body: `Message sent to ${phoneNumbers.length} numbers`,
     };
   } catch (err) {
     console.error(err);
-    return { statusCode: 500, body: "Failed to send SMS" };
+    return {
+      statusCode: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+      body: "Failed to send SMS",
+    };
   }
 };
