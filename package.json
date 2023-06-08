@@ -1,0 +1,23 @@
+{
+  "name": "serverless-function-sendsms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bukhtyarhaider/serverless-function-sendSMS.git"
+  },
+  "keywords": [],
+  "author": "Bukhtyar Haider",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bukhtyarhaider/serverless-function-sendSMS/issues"
+  },
+  "homepage": "https://github.com/bukhtyarhaider/serverless-function-sendSMS#readme",
+  "dependencies": {
+    "twilio": "^4.11.2"
+  }
+}
