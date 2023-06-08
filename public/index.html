@@ -2,9 +2,121 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sendSMS - serverless function</title>
+    <title>Serverless Function Documentation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 30px;
+      }
+      h1 {
+        color: #333;
+        font-size: 2em;
+        text-align: center;
+      }
+      h2 {
+        color: #444;
+        font-size: 1.5em;
+        margin-top: 20px;
+        border-bottom: 1px solid #bbb;
+        padding-bottom: 10px;
+      }
+      p,
+      li {
+        color: #555;
+        line-height: 1.6em;
+      }
+      code {
+        display: block;
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #ddd;
+        border-radius: 5px;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      li {
+        margin-bottom: 10px;
+      }
+    </style>
   </head>
-  <body></body>
+
+  <body>
+    <div class="container">
+      <h1>Serverless Function: Send SMS with Twilio</h1>
+
+      <h2>Overview</h2>
+      <p>
+        This serverless function is designed to send SMS messages to multiple
+        phone numbers via the Twilio API.
+      </p>
+
+      <h2>Dependencies</h2>
+      <p>The function depends on the Twilio Node.js client library:</p>
+      <code>const twilio = require("twilio");</code>
+
+      <h2>Environment Variables</h2>
+      <p>The following environment variables must be set:</p>
+      <ul>
+        <li><code>TWILIO_ACCOUNT_SID</code>: Your Twilio account SID.</li>
+        <li>
+          <code>TWILIO_AUTH_TOKEN</code>: Your Twilio authentication token.
+        </li>
+        <li>
+          <code>TWILIO_PHONE_NUMBER</code>: The phone number from which SMS
+          messages will be sent.
+        </li>
+        <li>
+          <code>API_TOKEN</code>: The token to validate the incoming request.
+        </li>
+      </ul>
+
+      <h2>Request Format</h2>
+      <p>
+        This function accepts POST requests with a JSON body containing the
+        following properties:
+      </p>
+      <ul>
+        <li>
+          <code>phoneNumbers</code>: An array of phone numbers to send the SMS
+          to.
+        </li>
+        <li><code>message</code>: The text message to send.</li>
+        <li><code>token</code>: The API token to authenticate the request.</li>
+      </ul>
+
+      <h2>Response Format</h2>
+      <p>
+        On successful execution, the function will return a HTTP 200 status code
+        and a body indicating the number of phone numbers the message was sent
+        to.
+      </p>
+
+      <h2>Error Handling</h2>
+      <p>
+        The function returns the following status codes and messages in the case
+        of an error:
+      </p>
+      <ul>
+        <li><code>405</code>: If the HTTP method is not POST.</li>
+        <li><code>403</code>: If the provided API token is invalid.</li>
+        <li>
+          <code>400</code>: If the message is empty or consists only of
+          whitespace.
+        </li>
+        <li>
+          <code>500</code>: If there is an error when trying to send the SMS
+          messages.
+        </li>
+      </ul>
+    </div>
+  </body>
 </html>
