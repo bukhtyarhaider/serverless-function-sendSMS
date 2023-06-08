@@ -1,6 +1,6 @@
 
 
-Serverless Function: Send SMS with Twilio
+Serverless Function: Send SMS with Twilio [![Netlify Status](https://api.netlify.com/api/v1/badges/f5bb60d7-1ea5-49a9-af09-3025f584350a/deploy-status)](https://app.netlify.com/sites/sendsms-serverless-function/deploys)
 =========================================
 
 Overview
